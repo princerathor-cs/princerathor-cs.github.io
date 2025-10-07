@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watch Latest Movies | CineZone</title>
+<style>
+body {
+  font-family: "Poppins", sans-serif;
+  background: #0d1b2a;
+  color: #fff;
+  margin: 0;
+}
+header {
+  background: #1b263b;
+  padding: 15px 20px;
+  text-align: center;
+}
+header h1 {
+  color: #00bfff;
+  margin: 0;
+}
+section {
+  padding: 30px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+.movie-card {
+  background: #1e3a5f;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: 0.3s;
+}
+.movie-card:hover {
+  transform: scale(1.05);
+}
+.movie-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+.movie-card h3 {
+  margin: 10px 0;
+  font-size: 18px;
+}
+.article {
+  line-height: 1.6;
+  color: #ddd;
+}
+.bottom {
+  text-align: center;
+  padding: 40px;
+}
+button {
+  background: #00bfff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+button:disabled {
+  background: gray;
+}
+.timer {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #00bfff;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎬 CineZone - Watch Latest Blockbusters</h1>
+  <p>Free Movies | HD Quality | No Sign-up</p>
+</header>
+<header>
+  <h1>Scroll down to get link</h1>
+</header>
+<section>
+  <h2>🔥 Trending Movies</h2>
+  <div class="movie-grid">
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/I/71niXI3lxlL._AC_UF894,1000_QL80_.jpg" alt="Avatar">
+      <h3>Avatar: The Way of Water</h3>
+    </div>
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/I/81nC8e+YGrL.jpg" alt="John Wick">
+      <h3>John Wick 4</h3>
+    </div>
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/I/71M8C6rRVdL._AC_SL1500_.jpg" alt="Oppenheimer">
+      <h3>Oppenheimer</h3>
+    </div>
+    <div class="movie-card">
+      <img src="https://m.media-amazon.com/images/I/81Gx8+XyU0L._AC_SL1500_.jpg" alt="Spiderman">
+      <h3>Spider-Man: Across the Spider-Verse</h3>
+    </div>
+  </div>
+</section>
+
+<section class="article">
+  <h2>🎥 Movie News & Reviews</h2>
+  <p>
+    Welcome to CineZone — your hub for HD movie streaming and entertainment news.
+    From Hollywood blockbusters to indie films, we bring everything you love about cinema in one place.
+    Scroll below to unlock access to our exclusive content and the latest releases.
+  </p>
+  <p>
+    Our movie experts curate reviews, behind-the-scenes interviews, and sneak peeks of upcoming films.
+    Whether you’re a fan of Marvel superheroes or classic dramas, CineZone keeps you updated 24×7.
+  </p>
+</section>
+
+<div class="bottom">
+  <h3>Scroll down and wait 10 seconds to continue</h3>
+  <div class="timer">⏱ Wait: <span id="count">10</span>s</div>
+  <button id="nextBtn" disabled>Continue to Step 2</button>
+</div>
+
+<script>
+let started = false;
+window.addEventListener("scroll", () => {
+  if (!started && window.scrollY > 400) {
+    started = true;
+    startTimer();
+  }
+});
+function startTimer() {
+  const btn = document.getElementById("nextBtn");
+  const count = document.getElementById("count");
+  let sec = 10;
+  const timer = setInterval(() => {
+    sec--;
+    count.textContent = sec;
+    if (sec <= 0) {
+      clearInterval(timer);
+      btn.disabled = false;
+      btn.textContent = "Go to Step 2 →";
+      btn.onclick = () => location.href = "page2.html";
+    }
+  }, 1000);
+}
+</script>
+</body>
+</html>
