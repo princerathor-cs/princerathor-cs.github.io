@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CineZone | Step 2 - Continue to Movie</title>
+<style>
+body {
+  font-family: "Poppins", sans-serif;
+  background: #0d1b2a;
+  color: #fff;
+  margin: 0;
+}
+header {
+  background: #1b263b;
+  padding: 15px 20px;
+  text-align: center;
+}
+header h1 {
+  color: #00bfff;
+  margin: 0;
+}
+section {
+  padding: 30px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+.ad-box {
+  background: #1e3a5f;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
+  color: #ccc;
+  font-size: 15px;
+}
+.article {
+  line-height: 1.6;
+  color: #ddd;
+}
+.article h2 {
+  color: #00bfff;
+}
+.movie-frame {
+  text-align: center;
+  margin: 25px 0;
+}
+.movie-frame iframe {
+  width: 100%;
+  height: 400px;
+  border-radius: 10px;
+  border: none;
+}
+.bottom {
+  text-align: center;
+  padding: 40px;
+}
+button {
+  background: #00bfff;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  background: #008ecc;
+}
+button:disabled {
+  background: gray;
+}
+.timer {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #00bfff;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #1b263b;
+  color: #ccc;
+  font-size: 14px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎬 CineZone - Step 2: Continue to Watch</h1>
+  <p>Exclusive Access | Behind the Scenes | Sponsored Ads</p>
+</header>
+<header>
+    <h2> Scroll Down to get movie link ⬇</h2>
+</header>
+<section>
+  <div class="ad-box">
+    Advertisement: 🔥 Get 1 Month Free on StreamFlix Premium
+  </div>
+
+  <div class="ad-box">
+    Sponsored: 📱 Download CineZone App for Daily Movie Rewards
+  </div>
+
+  <article class="article">
+    <h2>🎥 Behind the Movie</h2>
+    <p>
+      Welcome back to <b>CineZone</b>. You’re just one step away from watching your selected movie in full HD.  
+      But before you proceed, check out this quick featurette about the making of <i>Avatar: The Way of Water</i> — a story of survival, unity, and stunning visual effects that changed cinema forever.
+    </p>
+    <p>
+      Our mission is to keep you entertained and informed. From box-office analysis to hidden movie facts, CineZone is the one-stop destination for film lovers.  
+      Scroll down to explore more sponsored content and wait for a few seconds — you’ll be redirected automatically to the final watch page.
+    </p>
+  </article>
+
+  <div class="movie-frame">
+    <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4"
+            title="Movie Preview" allowfullscreen></iframe>
+  </div>
+
+  <div class="ad-box">
+    Advertisement: 💰 Earn ₹500 Daily by Watching Ads – Join Now
+  </div>
+  <div class="ad-box">
+    Sponsored: 🎁 Upgrade to CineZone Plus for Ad-Free Streaming
+  </div>
+</section>
+
+<div class="bottom">
+  <h3>Scroll down and wait 25 seconds to continue</h3>
+  <div class="timer">⏱ Wait: <span id="count">8</span>s</div>
+  <button id="nextBtn" disabled>Continue to Final Page</button>
+</div>
+
+<footer>
+  © 2025 CineZone | Your Entertainment World | Powered by Prince Rathore Studios
+</footer>
+
+<script>
+let started = false;
+window.addEventListener("scroll", () => {
+  if (!started && window.scrollY > 400) {
+    started = true;
+    startTimer();
+  }
+});
+function startTimer() {
+  const btn = document.getElementById("nextBtn");
+  const count = document.getElementById("count");
+  let sec = 30;
+  const timer = setInterval(() => {
+    sec--;
+    count.textContent = sec;
+    if (sec <= 0) {
+      clearInterval(timer);
+      btn.disabled = false;
+      btn.textContent = "🎬 Go to Final Page →";
+      btn.onclick = () => location.href = "final.html";
+    }
+  }, 1000);
+}
+</script>
+
+</body>
+</html>
